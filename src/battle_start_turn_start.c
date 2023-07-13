@@ -1907,7 +1907,7 @@ u8 GetTrainerBattleTransition(void)
 	#endif
 
 	#ifdef TUTORIAL_BATTLES
-	if (Var8000 == 0xFEFE && sTrainerEventObjectLocalId >= 0x100)
+	if ((Var8000 == 0xFEFE && sTrainerEventObjectLocalId >= 0x100) || sTrainerEventObjectLocalId >= 100)
 		return B_TRANSITION_CHAMPION;
 	#else
 	if (sTrainerEventObjectLocalId >= 0x100) //Used for mugshots
