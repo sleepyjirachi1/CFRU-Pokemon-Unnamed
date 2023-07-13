@@ -31,3 +31,6 @@ Cover Art.png
 
 # pycache files
 *.pyc
+
+# lss
+assembly/lss/
