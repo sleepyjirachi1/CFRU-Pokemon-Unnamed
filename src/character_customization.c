@@ -262,7 +262,7 @@ static const u16* sPlayerMarlonOutfitColours[] =
 	// create 255 OW tables
 	const struct EventObjectGraphicsInfo** const gOverworldTableSwitcher[255] =
 	{
-		(NPCPtr*) 0x839FDB0,
+		(NPCPtr*) 0x8EB1000,
 		(NPCPtr*) 0x0,
 		// etc...
 		// please note that this method makes compatability with OW Manager challenging
