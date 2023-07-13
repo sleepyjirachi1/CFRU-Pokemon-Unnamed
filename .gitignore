@@ -32,5 +32,8 @@ Cover Art.png
 # pycache files
 *.pyc
 
+# vscode
+.vscode/
+
 # lss
 assembly/lss/
