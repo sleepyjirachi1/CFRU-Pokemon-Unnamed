@@ -713,6 +713,18 @@ bool8 TryActivateGrandmasterEffect(void)
 				VarSet(VAR_GRANDMASTER_EFFECT, BLAZING_HEART);
 				effect = TRUE;
 				break;
+			case UNWAVERING_TENACITY_T:
+				gBattleScripting.bank = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+				BattleScriptPushCursorAndCallback(BattleScript_UnwaveringTenacityOpponent);
+				VarSet(VAR_GRANDMASTER_EFFECT, UNWAVERING_TENACITY);
+				effect = TRUE;
+				break;
+			case SAVAGE_EYES_T:
+				gBattleScripting.bank = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+				BattleScriptPushCursorAndCallback(BattleScript_SavageEyesOpponent);
+				VarSet(VAR_GRANDMASTER_EFFECT, SAVAGE_EYES);
+				effect = TRUE;
+				break;
 		}
 	}
 

@@ -17,10 +17,18 @@
 #define FLAG_NORMAL_MODE 0x1031 //Normal difficulty
 #define FLAG_VETERAN_MODE 0x1032 //Veteran difficulty
 #define VAR_WEATHER 0x511E //Battle weather variable
-#define VAR_GRANDMASTER_EFFECT 0x511F //Battle grandmaster effects variable
 
+/* Grandmaster Effects */
+#define VAR_GRANDMASTER_EFFECT 0x511F
+//Blazing Heart
 #define BLAZING_HEART_T 1
 #define BLAZING_HEART 11
+//Unwavering Tenacity
+#define UNWAVERING_TENACITY_T 2
+#define UNWAVERING_TENACITY 12
+//Savage Eyes
+#define SAVAGE_EYES_T 3
+#define SAVAGE_EYES 13
 
 /*===== General Vars =====*/
 #define VAR_TERRAIN 0x5000 //Set to a terrain type for a battle to begin with the given terrain
