@@ -17,9 +17,9 @@
 #define FLAG_NORMAL_MODE 0x1031 //Normal difficulty
 #define FLAG_VETERAN_MODE 0x1032 //Veteran difficulty
 #define VAR_WEATHER 0x511E //Battle weather variable
-#define VAR_GRANDMASTER_EFFECTS 0x511F //Battle grandmaster effects variable
+#define VAR_GRANDMASTER_EFFECT 0x511F //Battle grandmaster effects variable
 
-#define BLAZING_HEART_TEXT 1
+#define BLAZING_HEART_T 1
 #define BLAZING_HEART 11
 
 /*===== General Vars =====*/
