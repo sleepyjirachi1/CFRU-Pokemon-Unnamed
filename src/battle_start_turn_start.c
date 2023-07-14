@@ -47,6 +47,7 @@ enum BattleBeginStates
 	BTSTART_GET_TURN_ORDER,
 	BTSTART_ACTIVATE_OW_WEATHER,
 	BTSTART_ACTIVATE_OW_TERRAIN,
+	BTSTART_ACTIVATE_GM_EFFECT,
 	BTSTART_PRIMAL_REVERSION,
 	BTSTART_THIRD_TYPE_REMOVAL,
 	BTSTART_RAID_BATTLE_REVEAL,
@@ -267,6 +268,14 @@ void BattleBeginFirstTurn(void)
 
 			case BTSTART_ACTIVATE_OW_TERRAIN:
 				if (TryActivateOWTerrain())
+					return;
+
+				++*state;
+				*bank = 0;
+				break;
+			
+			case BTSTART_ACTIVATE_GM_EFFECT:
+				if (TryActivateGrandmasterEffect())
 					return;
 
 				++*state;
@@ -688,6 +697,26 @@ void BattleBeginFirstTurn(void)
 				#endif
 		}
 	}
+}
+
+bool8 TryActivateGrandmasterEffect(void)
+{
+	bool8 effect = FALSE;
+	u8 gmEffects = VarGet(VAR_GRANDMASTER_EFFECT);
+	if (gmEffects != 0)
+	{
+		switch (gmEffects)
+		{
+			case BLAZING_HEART_T:
+				gBattleScripting.bank = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+				BattleScriptPushCursorAndCallback(BattleScript_BlazingHeartOpponent);
+				VarSet(VAR_GRANDMASTER_EFFECT, BLAZING_HEART);
+				effect = TRUE;
+				break;
+		}
+	}
+
+	return effect;
 }
 
 bool8 TryActivateOWTerrain(void)

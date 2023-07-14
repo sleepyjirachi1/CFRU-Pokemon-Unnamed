@@ -47,3 +47,6 @@ extern const u8 gText_WeightSpeedBattleStart[];
 extern const u8 gText_PixieBattleStart[];
 extern const u8 gText_ShadowShieldBattleStart[];
 extern const u8 gText_RainbowBattleStart[];
+
+//Pokémon Unnamed
+extern const u8 BattleScript_BlazingHeartOpponent[];

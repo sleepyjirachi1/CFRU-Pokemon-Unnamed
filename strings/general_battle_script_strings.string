@@ -522,3 +522,8 @@ The storm is getting too strong to\nwithstand!
 
 #org @gText_RaidMonRanAway
 [PLAY_SE][11][00][FD][06] disappeared\nsomewhere[.]\p
+
+//Pokemon Unnamed New Battle Script Strings
+
+#org @BlazingHeartBattleString
+The opponent's blazing heart increases\nthe attack and special attack of her\lPok\emon by 20%.

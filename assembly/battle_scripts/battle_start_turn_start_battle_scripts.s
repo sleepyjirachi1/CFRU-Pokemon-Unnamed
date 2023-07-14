@@ -9,6 +9,8 @@ battle_start_turn_start_battle_scripts.s
 .include "../asm_defines.s"
 .include "../battle_script_macros.s"
 
+.global BattleScript_BlazingHeartOpponent
+
 .global BattleScript_AirBalloonFloat
 .global BattleScript_AirBalloonSub
 .global BattleScript_Totem
@@ -40,6 +42,15 @@ battle_start_turn_start_battle_scripts.s
 .global BattleScript_RaidShieldsBattleStart
 
 .global StringNull
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+BattleScript_BlazingHeartOpponent:
+	setword BATTLE_STRING_LOADER BlazingHeartBattleString
+	printstring 0x184
+	playanimation BANK_SCRIPTING ANIM_G_MAX_WILDFIRE 0x0
+	waitmessage DELAY_1SECOND
+	end3
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
