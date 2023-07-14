@@ -1769,11 +1769,7 @@ u16 GetMUS_ForBattle(void)
 		if (song != 0)
 			return song;
 
-		#ifdef UNBOUND
-			return BGM_BATTLE_BORRIUS_TRAINER;
-		#else
-			return BGM_BATTLE_RSE_TRAINER;
-		#endif
+		return BGM_BATTLE_RSE_TRAINER;
 	}
 
 	if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -1825,11 +1821,6 @@ u16 GetMUS_ForBattle(void)
 
 			if (gClassBasedBattleBGM[trainerClass])
 				return gClassBasedBattleBGM[trainerClass];
-			
-			#ifdef UNBOUND
-			if (gTrainerBattleOpponent_A == TRAINER_NEX)
-				return BGM_BATTLE_SINNOH_TRAINER;
-			#endif
 
 			if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
 			{
@@ -1845,11 +1836,7 @@ u16 GetMUS_ForBattle(void)
 				return song;
 		#endif
 
-		#ifdef UNBOUND
-			return BGM_BATTLE_BORRIUS_TRAINER;
-		#else
-			return BGM_BATTLE_TRAINER;
-		#endif
+		return BGM_BATTLE_TRAINER;
 	}
 
 	u16 species = gEnemyParty[0].species;
@@ -1866,33 +1853,16 @@ u16 GetMUS_ForBattle(void)
 		return gWildSpeciesBasedBattleBGM[gEnemyParty[1].species];
 	}
 
-	#ifdef UNBOUND
-		if (IsRaidBattle())
-			return BGM_BATTLE_RAID_BOSS;
+	if (IsRaidBattle())
+		return BGM_BATTLE_LEGENDARY_BIRDS;
 
-		#ifdef VAR_WILD_BGM_OVERRIDE
-			song = VarGet(VAR_WILD_BGM_OVERRIDE);
-			if (song != 0)
-				return song;
-		#endif
-
-		u16 dexNum = SpeciesToNationalPokedexNum(species);
-		if (dexNum >= NATIONAL_DEX_GROOKEY && dexNum < NATIONAL_DEX_CALYREX)
-			return BGM_BATTLE_GALAR_WILD;
-
-		return BGM_BATTLE_BORRIUS_WILD;
-	#else
-		if (IsRaidBattle())
-			return BGM_BATTLE_LEGENDARY_BIRDS;
-
-		#ifdef VAR_WILD_BGM_OVERRIDE
-			song = VarGet(VAR_WILD_BGM_OVERRIDE);
-			if (song != 0)
-				return song;
-		#endif
-
-		return BGM_BATTLE_WILD;
+	#ifdef VAR_WILD_BGM_OVERRIDE
+		song = VarGet(VAR_WILD_BGM_OVERRIDE);
+		if (song != 0)
+			return song;
 	#endif
+
+	return BGM_BATTLE_WILD;
 }
 
 u16 LoadProperMusicForLinkBattles(void)
