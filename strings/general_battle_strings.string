@@ -249,3 +249,8 @@ unknown location
 
 #org @gText_TrainerClass_ExShadowAdmin
 Ex Shadow Admin
+
+//Pokemon Unnamed New Battle Strings
+
+#org @BlazingHeartBattleString
+The opponent's blazing heart\nincreases her Pok\emon's Attack by 20%.

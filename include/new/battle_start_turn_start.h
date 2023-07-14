@@ -9,6 +9,7 @@
 
 //Exported Functions
 bool8 TryActivateOWTerrain(void);
+bool8 TryActivateGrandmasterEffect(void);
 u8 GetTotemStat(u8 bank, bool8 multiBoost);
 u8 GetTotemRaiseAmount(u8 bank, bool8 multiBoost);
 s8 TotemRaiseAmountToStatMod(u8 raiseAmount);
