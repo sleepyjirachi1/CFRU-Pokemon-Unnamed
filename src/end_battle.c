@@ -220,7 +220,6 @@ void HandleEndTurn_BattleWon(void)
 
 	VICTORY_MUSIC_SELECTION:
 		switch (gTrainers[id].trainerClass) {
-		#ifndef UNBOUND //Change this part
 			case CLASS_LEADER:
 			case CLASS_ELITE_4:
 			case CLASS_CHAMPION:
@@ -230,55 +229,7 @@ void HandleEndTurn_BattleWon(void)
 			default:
 				PlayBGM(BGM_VICTORY_TRAINER_BATTLE);
 				break;
-
-		#else //For Pokemon Unbound
-			case CLASS_CHAMPION:
-				PlayBGM(BGM_VICTORY_CHAMPION);
-				specialMus = TRUE;
-				break;
-			case CLASS_ELITE_4:
-				PlayBGM(BGM_VICTORY_ELITE_4);
-				specialMus = TRUE;
-				break;
-			case CLASS_LEADER:
-			case CLASS_FRONTIER_BRAIN:
-			case CLASS_SUCCESSOR:
-				PlayBGM(BGM_VICTORY_GYM);
-				specialMus = TRUE;
-				break;
-			case CLASS_SHADOW:
-			case CLASS_SHADOW_ADMIN:
-			case CLASS_BOSS:
-				PlayBGM(BGM_VICTORY_PLASMA);
-				specialMus = TRUE;
-				break;
-			case CLASS_LOR_ADMIN:
-				if (VarGet(VAR_MAIN_STORY) <= 0x25) //MAIN_STORY_LEFT_CUBE
-				{
-					PlayBGM(BGM_VICTORY_PLASMA); //Ivory is still a Shadow Admin at this point
-					specialMus = TRUE;
-					break;
-				}
-				//Fallthrough
-			case CLASS_LOR:
-			case CLASS_LOR_LEADER:
-			case CLASS_AGENT:
-				PlayBGM(BGM_VICTORY_GALACTIC);
-				specialMus = TRUE;
-				break;
-			default:
-				PlayBGM(BGM_VICTORY_TRAINER_BATTLE);
-				break;
-		#endif
 		}
-
-		#ifdef UNBOUND
-		if (MAP_IS(POKEMON_LEAGUE_CHAMP_ROOM))
-		{
-			PlayBGM(BGM_VICTORY_CHAMPION);
-			specialMus = TRUE;
-		}
-		#endif
 
 	SKIP_MUSIC_SELECTION:
 		if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !specialMus && !loop)
@@ -651,21 +602,6 @@ void EndOfBattleThings(void)
 		HealPokemonInFrontier();
 		gTerrainType = 0; //Reset now b/c normal reset is after BG is loaded
 		CalculatePlayerPartyCount(); //Party size can change after multi battle is over
-
-		#ifdef UNBOUND
-		u8 weather = GetCurrentWeather();
-		if (InBattleSands())
-		{
-			if (weather != WEATHER_NONE
-			&& weather != WEATHER_CLOUDS
-			&& weather != WEATHER_SUNNY)
-				SetSav1Weather(WEATHER_RAIN_LIGHT); //Reset weather in Battle Sands
-		}
-		else if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_CIRCUS)
-		{
-			SetSav1Weather(WEATHER_NONE);
-		}
-		#endif
 	}
 }
 
@@ -894,6 +830,9 @@ static void EndBattleFlagClear(void)
 	VarSet(VAR_TOTEM + 3, 0);	//Bank B_POSITION_OPPONENT_RIGHT's Stat
 
 	VarSet(VAR_TERRAIN, 0);
+	// VarSet(VAR_BATTLE_WEATHER);
+	VarSet(VAR_GRANDMASTER_EFFECT, 0);
+
 	VarSet(VAR_BATTLE_FACILITY_TRAINER1_NAME, 0xFFFF);
 	VarSet(VAR_BATTLE_FACILITY_TRAINER2_NAME, 0xFFFF);
 	#ifdef VAR_BATTLE_TRANSITION_LOGO
