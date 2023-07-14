@@ -13,6 +13,15 @@
 //#define DEBUG_DYNAMAX //Dynamax can be used in Dynamax battles without a Dynamax Band
 //#define DEBUG_AI_CHOICES //Removes the frame-based randomness of the AI's decisions
 
+/*===== Pokémon Unnamed =====*/
+#define FLAG_NORMAL_MODE 0x1031 //Normal difficulty
+#define FLAG_VETERAN_MODE 0x1032 //Veteran difficulty
+#define VAR_WEATHER 0x511E //Battle weather variable
+#define VAR_GRANDMASTER_EFFECTS 0x511F //Battle grandmaster effects variable
+
+#define BLAZING_HEART_TEXT 1
+#define BLAZING_HEART 11
+
 /*===== General Vars =====*/
 #define VAR_TERRAIN 0x5000 //Set to a terrain type for a battle to begin with the given terrain
 #define VAR_TOTEM 0x5001 //to var + 3 (0x5004)
