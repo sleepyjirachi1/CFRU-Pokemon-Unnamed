@@ -2931,6 +2931,14 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 			spDefense = (15 * spDefense) / 10; //Ground types get a Sp. Def boost in a "Vicious Sandstorm"
 	}
 
+//BLAZING_HEART 1.2x Attack and Special Attack
+	if ( (VarGet(VAR_GRANDMASTER_EFFECT) == BLAZING_HEART) && (SIDE(bankAtk) == B_SIDE_OPPONENT) )
+	{
+		attack = (12 * attack) / 10;
+		spAttack = (12 * spAttack) / 10;
+	}
+
+
 //Old Exploding Check
 	#ifdef OLD_EXPLOSION_BOOST
 		if (move == MOVE_SELFDESTRUCT || move == MOVE_EXPLOSION)
