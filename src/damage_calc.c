@@ -2938,6 +2938,12 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 		spAttack = (12 * spAttack) / 10;
 	}
 
+//UNWAVERING_TENACITY 1.2x Defense and Special Defense
+	if ( (VarGet(VAR_GRANDMASTER_EFFECT) == UNWAVERING_TENACITY) && (SIDE(bankDef) == B_SIDE_OPPONENT) )
+	{
+		defense = (12 * defense) / 10;
+		spDefense = (12 * spDefense) / 10;
+	}
 
 //Old Exploding Check
 	#ifdef OLD_EXPLOSION_BOOST
@@ -3261,6 +3267,11 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 	&& ((!useMonDef && IsAffectedByShadowShieldBattle(bankDef))
 	 || (useMonDef && IsMonAffectedByShadowShieldBattle(data->monDef))))
 		damage /= 2;
+
+	if ( (VarGet(VAR_GRANDMASTER_EFFECT) == SAVAGE_EYES) && (SIDE(bankAtk) == B_SIDE_OPPONENT) )
+	{
+		damage = (15 * damage) / 10;
+	}
 
 	if (damage == 0)
 		damage = 1;

@@ -526,4 +526,10 @@ The storm is getting too strong to\nwithstand!
 //Pokemon Unnamed New Battle Script Strings
 
 #org @BlazingHeartBattleString
-The opponent's blazing heart increases\nthe attack and special attack of her\lPok\emon by 20%.
+The opponent's blazing heart increases\nthe attack and special attack of her\lPok\emon by 20%!
+
+#org @UnwaveringTenacityBattleString
+The opponent's unwavering tenacity\nincreases the defense and special \ldefense of his Pok\emon by 20%!
+
+#org @SavageEyesBattleString
+The opponent's savage eyes increase\nthe damage taken from her Pok\emon\lby 50%!

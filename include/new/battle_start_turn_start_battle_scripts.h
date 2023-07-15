@@ -50,3 +50,5 @@ extern const u8 gText_RainbowBattleStart[];
 
 //Pokémon Unnamed
 extern const u8 BattleScript_BlazingHeartOpponent[];
+extern const u8 BattleScript_UnwaveringTenacityOpponent[];
+extern const u8 BattleScript_SavageEyesOpponent[];
