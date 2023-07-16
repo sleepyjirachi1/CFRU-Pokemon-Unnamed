@@ -2692,7 +2692,7 @@ void FieldUseFunc_Honey(u8 taskId)
 	SetUpItemUseOnFieldCallback(taskId);
 }
 
-extern u8 GetCurrentLevelCap(void); //Must be implemented yourself
+#define gText_LevelCapLock (const u8*) 0x87211D0
 void ItemUseCB_RareCandy(u8 taskId, TaskFunc func)
 {
 	bool8 noEffect;
@@ -2702,11 +2702,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc func)
 
 	PlaySE(SE_SELECT);
 
-	if (level >= MAX_LEVEL
-	#ifdef FLAG_HARD_LEVEL_CAP
-	|| (FlagGet(FLAG_HARD_LEVEL_CAP) && level >= GetCurrentLevelCap())
-	#endif
-	)
+	if (level >= MAX_LEVEL || level >= GetCurrentLevelCap())
 	{
 		if (GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, 0) == SPECIES_NONE) //Can't use Rare Candy to evolve mon
 			noEffect = TRUE;
@@ -2723,7 +2719,14 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc func)
 	if (noEffect)
 	{
 		gPartyMenuUseExitCallback = FALSE;
-		DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+		if (level >= GetCurrentLevelCap())
+		{
+			DisplayPartyMenuMessage(gText_LevelCapLock, TRUE);
+		}
+		else
+		{
+			DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+		}
 		ScheduleBgCopyTilemapToVram(2);
 		gTasks[taskId].func = func;
 	}
