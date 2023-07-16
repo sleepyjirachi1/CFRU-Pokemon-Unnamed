@@ -14,6 +14,11 @@ util.c
 	general utility functions
 */
 
+const u8 LevelCaps[1] =
+{
+	10 //Before Brock
+};
+
 //This file's functions:
 static u8 TryRandomizeAbility(u8 ability, unusedArg u16 species);
 
@@ -546,4 +551,14 @@ bool8 CanPartyMonBeFrozen(struct Pokemon* mon)
 		return FALSE;
 
 	return TRUE;
+}
+
+u8 GetCurrentLevelCap(void)
+{
+	u8 flagCount = 0;
+
+	if (FlagGet(FLAG_BADGE01_GET))
+		++flagCount;
+
+	return LevelCaps[flagCount];
 }
