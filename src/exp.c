@@ -39,7 +39,6 @@ enum
 };
 
 #define BattleScript_LevelUp (u8*) 0x81D89F5
-
 extern const u16 gBaseExpBySpecies[];
 extern u8 String_TeamExpGain[];
 
@@ -263,6 +262,11 @@ void atk23_getexp(void)
 
 	SKIP_EXP_CALC:
 		calculatedExp = MathMax(1, calculatedExp);
+
+		if (pokeLevel >= GetCurrentLevelCap()) //New
+		{
+			calculatedExp = 1;
+		}
 		gBattleMoveDamage = calculatedExp;
 
 		gBattleScripting.expStateTracker++;
@@ -419,6 +423,11 @@ void atk23_getexp(void)
 					gBattleMons[leveledUpBank].spAttack = gPlayerParty[gBattleStruct->expGetterMonId].spAttack;
 					gBattleMons[leveledUpBank].spDefense = gPlayerParty[gBattleStruct->expGetterMonId].spDefense;
 				}
+			}
+
+			if (gPlayerParty[gBattleStruct->expGetterMonId].level >= GetCurrentLevelCap()) //New
+			{
+				gBattleMoveDamage = 0;
 			}
 		}
 		else
