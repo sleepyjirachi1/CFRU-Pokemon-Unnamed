@@ -4113,6 +4113,7 @@ static void CheckShinyMon(struct Pokemon* mon)
 			// ||  IsShinyOtIdPersonality(otId, Random32()))
 			// 	forceShiny = TRUE;
 			shinyChance *= 3; //New; With charm odds 1/8192 -> 3/8192
+			shinyChance -= 2; //New; With charm odds 3/8192 -> 3/8937 == 1/2979
 		}
 		#endif
 
