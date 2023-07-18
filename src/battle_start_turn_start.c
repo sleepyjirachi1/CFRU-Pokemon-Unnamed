@@ -1781,7 +1781,7 @@ u16 GetMUS_ForBattle(void)
 		if (song != 0)
 			return song;
 
-		return BGM_BATTLE_RSE_TRAINER;
+		return BGM_HGSS_JOHTO_TRAINER;
 	}
 
 	if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -1848,7 +1848,7 @@ u16 GetMUS_ForBattle(void)
 				return song;
 		#endif
 
-		return BGM_BATTLE_TRAINER;
+		return BGM_HGSS_KANTO_TRAINER;
 	}
 
 	u16 species = gEnemyParty[0].species;
@@ -1866,7 +1866,7 @@ u16 GetMUS_ForBattle(void)
 	}
 
 	if (IsRaidBattle())
-		return BGM_BATTLE_LEGENDARY_BIRDS;
+		return BGM_HGSS_BATTLE_ENTEI;
 
 	#ifdef VAR_WILD_BGM_OVERRIDE
 		song = VarGet(VAR_WILD_BGM_OVERRIDE);
@@ -1874,7 +1874,7 @@ u16 GetMUS_ForBattle(void)
 			return song;
 	#endif
 
-	return BGM_BATTLE_WILD;
+	return BGM_HGSS_WILD_KANTO;
 }
 
 u16 LoadProperMusicForLinkBattles(void)
